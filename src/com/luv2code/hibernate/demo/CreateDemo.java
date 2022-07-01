@@ -22,11 +22,20 @@ public class CreateDemo {
 
         try {
             // create the objects
+            /*
             Instructor tempInstructor =
                     new Instructor("Chad", "Darby", "chad@luv2code.com");
 
             InstructorDetail tempInstructorDetail =
                     new InstructorDetail("http://www.luv2code.com/youtube", "Luv 2 code!!!");
+
+             */
+            Instructor tempInstructor =
+                    new Instructor("Madhu", "Patel", "madhu@luv2code.com");
+
+            InstructorDetail tempInstructorDetail =
+                    new InstructorDetail("http://www.youtube.com", "Guitar");
+
 
             // associate the objects
             tempInstructor.setInstructorDetail(tempInstructorDetail);
@@ -35,6 +44,12 @@ public class CreateDemo {
             session.beginTransaction();
 
             // save the instructor
+            //
+            // Note: this will ALSO save the details objects
+            // because of CascadeType.ALL
+            //
+            System.out.println("Saving instructor: " + tempInstructor);
+            session.save(tempInstructor);
 
             // commit the transaction
             session.getTransaction().commit();
